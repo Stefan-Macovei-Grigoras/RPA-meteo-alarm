@@ -1,7 +1,7 @@
 # Meteo Alarm Automation
 
 ## Overview
-This project automates the process of monitoring weather alerts from the [Meteo Alarm](https://meteoalarm.org/en/live/) website. The automation checks for alarms in a specified country using API calls, extracts details about awareness levels and alert types, and generates a report in Excel format. The report is sorted alphabetically by region and sent via email with high importance and personal sensitivity settings.
+This project automates the process of monitoring weather alerts from the [Meteo Alarm](https://meteoalarm.org/en/live/) website. The automation checks for alarms in a specified country using API calls, extracts details about awareness levels and alert types, and generates a report in Excel format. The report is sorted alphabetically by region and sent via email to the people located in that areas.
 
 ## Features
 1. **Alarm Check** - Verifies if there are active alarms for the specified country.
