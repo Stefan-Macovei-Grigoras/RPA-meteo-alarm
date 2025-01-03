@@ -112,13 +112,9 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Send_Email" sap:VirtualizedContainerService.HintSize="1096,2924" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="AlertsDataTable" />
-      <Variable x:TypeArguments="x:String" Name="emailBody">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Alerts:&quot; + vbCrLf" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="sd:DataTable" Name="filteredDataTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_alerts" />
+      <Variable x:TypeArguments="x:String" Default="[&quot;Alerts:&quot; + vbCrLf]" Name="str_emailBody" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_filteredAlerts" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -137,7 +133,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" EditPassword="{x:Null}" sap:VirtualizedContainerService.HintSize="658.4,2731.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" Password="{x:Null}" ResizeWindow="None" SensitivityLabel="{x:Null}" SensitivityOperation="None" TemplatePath="{x:Null}" WorkbookPath="Data\Alerts.xlsx">
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="658.4,2731.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="Data\Alerts.xlsx">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
@@ -152,7 +148,7 @@
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" EditPassword="{x:Null}" sap:VirtualizedContainerService.HintSize="589.6,2064" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" Password="{x:Null}" ResizeWindow="None" SensitivityLabel="{x:Null}" SensitivityOperation="None" TemplatePath="{x:Null}" WorkbookPath="Input\input.xlsx">
+                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="589.6,2064" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="Input\input.xlsx">
                           <ueab:ExcelApplicationCard.Body>
                             <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                               <ActivityAction.Argument>
@@ -183,8 +179,8 @@
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="455.2,201.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_3" Range="[AlertsExcel.Sheet(userRow.ByField(&quot;Country&quot;))]" SaveTo="[AlertsDataTable]" />
-                                        <ui:FilterDataTable DataTable="[AlertsDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="455.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[filteredDataTable]" SelectColumnsMode="Remove">
+                                        <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="455.2,201.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_3" Range="[AlertsExcel.Sheet(userRow.ByField(&quot;Country&quot;))]" SaveTo="[Dt_alerts]" />
+                                        <ui:FilterDataTable DataTable="[Dt_alerts]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="455.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[Dt_filteredAlerts]" SelectColumnsMode="Remove">
                                           <ui:FilterDataTable.Filters>
                                             <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                                               <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -203,7 +199,7 @@
                                             </scg:List>
                                           </ui:FilterDataTable.SelectColumns>
                                         </ui:FilterDataTable>
-                                        <If Condition="[filteredDataTable.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="455.2,1040" sap2010:WorkflowViewState.IdRef="If_2">
+                                        <If Condition="[Dt_filteredAlerts.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="455.2,1040" sap2010:WorkflowViewState.IdRef="If_2">
                                           <If.Then>
                                             <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="453.6,820.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                               <sap:WorkflowViewStateService.ViewState>
@@ -211,7 +207,7 @@
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filteredDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="420,591.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[Dt_filteredAlerts]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="420,591.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                                                 <ui:ForEachRow.Body>
                                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                                     <ActivityAction.Argument>
@@ -224,7 +220,7 @@
                                                           <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:ModifyText DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="384.8,349.6" sap2010:WorkflowViewState.IdRef="ModifyText_1" OutputText="[emailBody]" SourceText="[emailBody]">
+                                                      <ui:ModifyText DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="384.8,349.6" sap2010:WorkflowViewState.IdRef="ModifyText_1" OutputText="[str_emailBody]" SourceText="[str_emailBody]">
                                                         <ui:ModifyText.Body>
                                                           <ActivityAction>
                                                             <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.59999999999997,215.19999999999996" sap2010:WorkflowViewState.IdRef="Sequence_17">
@@ -242,7 +238,7 @@
                                                   </ActivityAction>
                                                 </ui:ForEachRow.Body>
                                               </ui:ForEachRow>
-                                              <ui:SendOutlookMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Body="[emailBody]" Cc="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="420,169.6" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" MailMessage="{x:Null}" ReplyTo="{x:Null}" Sensitivity="Normal" SentOnBehalfOfName="{x:Null}" Subject="Alert in your area" TimeoutMS="{x:Null}" To="[userRow.ByField(&quot;Email&quot;)]" UseISConnection="True">
+                                              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[str_emailBody]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="420,169.6" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="Alert in your area" To="[userRow.ByField(&quot;Email&quot;)]" UseISConnection="True">
                                                 <ui:SendOutlookMail.ConnectionDetailsBackupSlot>
                                                   <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
                                                     <usau:BackupSlot.BackupValues>

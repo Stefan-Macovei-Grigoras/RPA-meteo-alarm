@@ -95,17 +95,17 @@
     </sap:WorkflowViewStateService.ViewState>
     <Sequence DisplayName="Check users File Existence Sequence" sap:VirtualizedContainerService.HintSize="452.8,1516" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
-        <Variable x:TypeArguments="x:Boolean" Name="fileExistsBoolean" />
+        <Variable x:TypeArguments="x:Boolean" Name="bool_usersFileExists" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:FileExistsX DisplayName="File Exists" Exists="[fileExistsBoolean]" sap:VirtualizedContainerService.HintSize="419.2,166.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_str_usersFilePath]" />
+      <ui:FileExistsX DisplayName="File Exists" Exists="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="419.2,166.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_str_usersFilePath]" />
       <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="419.2,1100.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <If Condition="[fileExistsBoolean]" sap:VirtualizedContainerService.HintSize="417.6,505.6" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="417.6,505.6" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
