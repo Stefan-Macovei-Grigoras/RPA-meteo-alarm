@@ -6,8 +6,8 @@
   "OriginalIconFileName": null,
   "Arguments": [
     {
-      "Name": "out_str_UsersFilePath",
-      "DisplayName": "out_str_UsersFilePath",
+      "Name": "out_UsersFilePath",
+      "DisplayName": "out_UsersFilePath",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
@@ -18,8 +18,8 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_Dt_UserData",
-      "DisplayName": "in_Dt_UserData",
+      "Name": "in_UserData",
+      "DisplayName": "in_UserData",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

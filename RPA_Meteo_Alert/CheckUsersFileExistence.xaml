@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="UserDataDispatcher" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_str_UsersFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_UsersFilePath" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -93,7 +93,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Check users File Existence Sequence" sap:VirtualizedContainerService.HintSize="452.8,1516" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Check_Ssers_File_Existence" sap:VirtualizedContainerService.HintSize="452.8,1516" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="bool_usersFileExists" />
       </Sequence.Variables>
@@ -102,7 +102,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:FileExistsX DisplayName="File Exists" Exists="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="419.2,166.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_str_usersFilePath]" />
+      <ui:FileExistsX DisplayName="Users_File_Exists" Exists="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="419.2,166.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_UsersFilePath]" />
       <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="419.2,1100.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
           <If Condition="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="417.6,505.6" sap2010:WorkflowViewState.IdRef="If_1">
