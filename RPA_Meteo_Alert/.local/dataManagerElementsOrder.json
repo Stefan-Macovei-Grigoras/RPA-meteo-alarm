@@ -25,6 +25,9 @@
       "Path": "HTTP.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "entryList&Sequence_2",
+        "xNamespace&Sequence_2",
+        "alertsDt&Sequence_2",
         "responseContent&Sequence_2",
         "xmlDocument&Sequence_2"
       ],
@@ -58,6 +61,38 @@
       "ArgumentsSectionElementsOrder": [
         "inputFilePath"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Read Users and Add Countries Sheets.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "alertsWorkbook&Sequence_1",
+        "usersWorkbook&Sequence_1",
+        "countries_DT&Sequence_1",
+        "alertsDt&Sequence_9",
+        "out_DT_usersDetails&Sequence_8",
+        "alertsWokbook&Sequence_8"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_FilePath",
+        "out_DT_usersDetails"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Send Email.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "filteredDataTable&Sequence_1",
+        "emailBody&Sequence_1",
+        "AlertsDataTable&Sequence_1",
+        "cellValue&Sequence_5",
+        "rowIndex&Sequence_5"
+      ],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
