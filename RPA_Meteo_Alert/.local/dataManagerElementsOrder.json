@@ -12,26 +12,30 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "inputFilePathVariable&Sequence_3"
+        "str_alertsFilePath&Sequence_1",
+        "str_usersFilePath&Sequence_2",
+        "Dt_userData&Sequence_2"
       ],
-      "ArgumentsSectionElementsOrder": [
-        "inputFilePath",
-        "out_DT_UserData"
-      ],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     },
     {
-      "Path": "HTTP.xaml",
+      "Path": "APICalls.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "entryList&Sequence_2",
-        "xNamespace&Sequence_2",
-        "alertsDt&Sequence_2",
-        "responseContent&Sequence_2",
-        "xmlDocument&Sequence_2"
+        "e_systemException&Sequence_29",
+        "e_xmlException&Sequence_2",
+        "e_systemException&Sequence_2",
+        "XNs_namespace&Sequence_2",
+        "Dt_alerts&Sequence_2",
+        "list_entryList&Sequence_2",
+        "xml_Document&Sequence_2",
+        "str_responseContent&Sequence_2"
       ],
-      "ArgumentsSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_alertsFilepath"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     },
@@ -53,46 +57,60 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Check Input File Existence.xaml",
+      "Path": "CheckUsersFileExistence.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "fileExists&Sequence_2"
+        "bool_usersFileExists&Sequence_2"
       ],
       "ArgumentsSectionElementsOrder": [
-        "inputFilePath"
+        "in_usersFilePath"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     },
     {
-      "Path": "Read Users and Add Countries Sheets.xaml",
+      "Path": "ReadUsersAndCreateAlertsExcel.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "alertsWorkbook&Sequence_1",
-        "usersWorkbook&Sequence_1",
-        "countries_DT&Sequence_1",
+        "Dt_countries&Sequence_1",
+        "Workbook_alerts&Sequence_1",
+        "Workbook_users&Sequence_1",
         "alertsDt&Sequence_9",
         "out_DT_usersDetails&Sequence_8",
         "alertsWokbook&Sequence_8"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_FilePath",
-        "out_DT_usersDetails"
+        "out_usersDetails",
+        "in_FilePath"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     },
     {
-      "Path": "Send Email.xaml",
+      "Path": "SendEmails.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "filteredDataTable&Sequence_1",
-        "emailBody&Sequence_1",
-        "AlertsDataTable&Sequence_1",
+        "Dt_filteredAlerts&Sequence_1",
+        "str_emailBody&Sequence_1",
+        "Dt_alerts&Sequence_1",
         "cellValue&Sequence_5",
         "rowIndex&Sequence_5"
       ],
-      "ArgumentsSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_usersFilePath",
+        "in_alertsFilePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetFilePathAssets.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "out_usersFilePath",
+        "out_alertsFilepath"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
