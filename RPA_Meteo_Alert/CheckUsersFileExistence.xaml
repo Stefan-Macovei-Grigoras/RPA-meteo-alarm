@@ -87,13 +87,13 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UserDataDispatcher" sap:VirtualizedContainerService.HintSize="1096,1222.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UserDataDispatcher" sap:VirtualizedContainerService.HintSize="944.0000000000001,1222.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Check_Ssers_File_Existence" sap:VirtualizedContainerService.HintSize="452.8,1199.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Check_Users_File_Existence" sap:VirtualizedContainerService.HintSize="452.8,1199.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="bool_usersFileExists" />
       </Sequence.Variables>

@@ -260,25 +260,25 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="721.6,4192.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <Sequence sap:VirtualizedContainerService.HintSize="721.6,4328" sap2010:WorkflowViewState.IdRef="Sequence_23">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use_Alerts_Excel" sap:VirtualizedContainerService.HintSize="688,3967.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="Data\Alerts.xlsx">
+              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use_Alerts_Excel" sap:VirtualizedContainerService.HintSize="688,4102.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="Data\Alerts.xlsx">
                 <ueab:ExcelApplicationCard.Body>
                   <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="AlertsExcel" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="654.4,3665.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="654.4,3800.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ueab:ForEachSheetX DisplayName="For_Each_AlertsExcel_Sheet" sap:VirtualizedContainerService.HintSize="620.8,3605.6" sap2010:WorkflowViewState.IdRef="ForEachSheetX_1" Workbook="[AlertsExcel]">
+                      <ueab:ForEachSheetX DisplayName="For_Each_AlertsExcel_Sheet" sap:VirtualizedContainerService.HintSize="620.8,3740.8" sap2010:WorkflowViewState.IdRef="ForEachSheetX_1" Workbook="[AlertsExcel]">
                         <ueab:ForEachSheetX.Body>
                           <ActivityAction x:TypeArguments="ue:WorksheetQuickHandle, x:Int32">
                             <ActivityAction.Argument1>
@@ -287,23 +287,23 @@
                             <ActivityAction.Argument2>
                               <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                             </ActivityAction.Argument2>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="587.2,3416" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="587.2,3551.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="553.6,1837.6" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="[TimeSpan.FromSeconds(1)]">
+                              <ui:RetryScope sap2010:Annotation.AnnotationText="API call and xaml deserialization might throw errors&#xD;&#xA;if there are errors retry , hoping for better results, if not, skip this cuntry" ContinueOnError="True" DisplayName="Retry_Scope" sap:VirtualizedContainerService.HintSize="553.6,1972.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="[TimeSpan.FromSeconds(1)]">
                                 <ui:RetryScope.ActivityBody>
                                   <ActivityAction>
-                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="512,1514.4" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="512,1545.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                                      <ui:MultipleAssign DisplayName="Exception_Default_Assign" sap:VirtualizedContainerService.HintSize="478.4,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -326,7 +326,7 @@
                                         </ui:MultipleAssign.AssignOperations>
                                       </ui:MultipleAssign>
                                       <ui:BuildDataTable DataTable="[Dt_alerts]" DisplayName="Build Dt_alert" sap:VirtualizedContainerService.HintSize="478.4,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_4" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Region&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;_x0020_Alert_x0020_Type&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Awareness_x0020_level&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                                      <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="API_Call_For_Country" EnableSSLVerification="True" EndPoint="[&quot;https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-&quot; + CurrentSheet.Name.ToLower]" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="GET" Result="[str_responseContent]" TimeoutMS="6000">
+                                      <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" sap2010:Annotation.AnnotationText="" AuthenticationType="None" BodyFormat="application/xml" DisplayName="API_Call_For_Country" EnableSSLVerification="True" EndPoint="[&quot;https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-&quot; + CurrentSheet.Name.ToLower]" sap:VirtualizedContainerService.HintSize="478.4,134.4" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="GET" Result="[str_responseContent]" TimeoutMS="6000">
                                         <ui:HttpClient.Attachments>
                                           <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                                         </ui:HttpClient.Attachments>
@@ -342,6 +342,11 @@
                                         <ui:HttpClient.UrlSegments>
                                           <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                                         </ui:HttpClient.UrlSegments>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
                                       </ui:HttpClient>
                                       <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="478.4,1079.2" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                                         <TryCatch.Try>
@@ -417,52 +422,70 @@
                                 </ui:RetryScope.ActivityBody>
                                 <ui:RetryScope.Condition>
                                   <ActivityFunc x:TypeArguments="x:Boolean">
-                                    <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[e_systemException Is Nothing AND  e_xmlException Is Nothing]" sap:VirtualizedContainerService.HintSize="512,131.2" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                                    <ui:CheckTrue ErrorMessage="{x:Null}" sap2010:Annotation.AnnotationText="checks if there are errors&#xD;&#xA;if there are, the (check) true condition is not met so the retries activate" DisplayName="Check_True" Expression="[e_systemException Is Nothing AND  e_xmlException Is Nothing]" sap:VirtualizedContainerService.HintSize="512,191.2" sap2010:WorkflowViewState.IdRef="CheckTrue_1">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:CheckTrue>
                                   </ActivityFunc>
                                 </ui:RetryScope.Condition>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:RetryScope>
-                              <If Condition="[e_systemException is Nothing AND e_xmlException is Nothing]" sap:VirtualizedContainerService.HintSize="553.6,1518.4" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If Condition="[e_systemException is Nothing AND e_xmlException is Nothing]" DisplayName="If_No_Errors" sap:VirtualizedContainerService.HintSize="468.8,1570.4000000000003" sap2010:WorkflowViewState.IdRef="If_1">
                                 <If.Then>
-                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,1106.4" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,1181.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                    <Assign sap2010:Annotation.AnnotationText="each &quot;entry&quot; has the info regarding the region" sap:VirtualizedContainerService.HintSize="433.6,144.8" sap2010:WorkflowViewState.IdRef="Assign_5">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="scg:List(sxl:XElement)">[list_entryList]</OutArgument>
                                       </Assign.To>
                                       <Assign.Value>
                                         <InArgument x:TypeArguments="scg:List(sxl:XElement)">[xml_Document.Descendants.Where(Function(e) e.Name.LocalName = "entry").ToList]</InArgument>
                                       </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
                                     </Assign>
-                                    <ui:ForEach x:TypeArguments="sxl:XElement" CurrentIndex="{x:Null}" DisplayName="For Each currentXElement" sap:VirtualizedContainerService.HintSize="433.6,401.6" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[list_entryList]">
+                                    <ui:ForEach x:TypeArguments="sxl:XElement" CurrentIndex="{x:Null}" DisplayName="For_Each_currentXElement" sap:VirtualizedContainerService.HintSize="433.6,445.6" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[list_entryList]">
                                       <ui:ForEach.Body>
                                         <ActivityAction x:TypeArguments="sxl:XElement">
                                           <ActivityAction.Argument>
                                             <DelegateInArgument x:TypeArguments="sxl:XElement" Name="currentXElement" />
                                           </ActivityAction.Argument>
-                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,271.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,315.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ currentXElement.Element(xNs_namespace + &quot;areaDesc&quot;).Value, currentXElement.Element(xNs_namespace + &quot;event&quot;).Value, currentXElement.Element(xNs_namespace + &quot;severity&quot;).Value }]" DataTable="[Dt_alerts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="382.4,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
+                                            <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Populate the Data Table with the data we are interested in from each region entry" ArrayRow="[{ currentXElement.Element(xNs_namespace + &quot;areaDesc&quot;).Value, currentXElement.Element(xNs_namespace + &quot;event&quot;).Value, currentXElement.Element(xNs_namespace + &quot;severity&quot;).Value }]" DataTable="[Dt_alerts]" DisplayName="Add_Data_Row_to_Dt_alerts" sap:VirtualizedContainerService.HintSize="382.4,255.2" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:AddDataRow>
                                           </Sequence>
                                         </ActivityAction>
                                       </ui:ForEach.Body>
                                     </ui:ForEach>
-                                    <ui:RemoveDuplicateRows DataTable="[Dt_alerts]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_4" OutputDataTable="[Dt_alerts]" />
-                                    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Region" DataTable="[Dt_alerts]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[Dt_alerts]" SortOrder="Ascending" />
-                                    <ueab:WriteRangeX Destination="[CurrentSheet]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="433.6,192" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[Dt_alerts]" />
+                                    <ui:RemoveDuplicateRows DataTable="[Dt_alerts]" DisplayName="Remove_Duplicate_Rows" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_4" OutputDataTable="[Dt_alerts]" />
+                                    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Region" DataTable="[Dt_alerts]" DisplayName="Sort_Dt_alerts" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[Dt_alerts]" SortOrder="Ascending" />
+                                    <ueab:WriteRangeX Destination="[CurrentSheet]" DisplayName="Write_Dt_alerts_to_Alerts_Excel" sap:VirtualizedContainerService.HintSize="433.6,192" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[Dt_alerts]" />
                                     <Delay Duration="00:00:00.5000000" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Delay_2" />
                                   </Sequence>
                                 </If.Then>
