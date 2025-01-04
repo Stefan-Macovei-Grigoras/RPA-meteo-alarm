@@ -12,9 +12,9 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "str_alertsFilePath&Sequence_1",
-        "str_usersFilePath&Sequence_2",
-        "Dt_userData&Sequence_2"
+        "alertsFilePath&Sequence_1",
+        "userDataTable&Sequence_2",
+        "usersFilePath&Sequence_2"
       ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
@@ -24,14 +24,13 @@
       "Path": "APICalls.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "e_systemException&Sequence_29",
-        "e_xmlException&Sequence_2",
-        "e_systemException&Sequence_2",
-        "XNs_namespace&Sequence_2",
-        "Dt_alerts&Sequence_2",
-        "list_entryList&Sequence_2",
-        "xml_Document&Sequence_2",
-        "str_responseContent&Sequence_2"
+        "systemException&Sequence_1",
+        "xmlException&Sequence_1",
+        "alertsDT&Sequence_1",
+        "xNamespace&Sequence_1",
+        "entryList&Sequence_1",
+        "responseContent&Sequence_1",
+        "xDocument&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_alertsFilepath"
@@ -60,7 +59,7 @@
       "Path": "CheckUsersFileExistence.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "bool_usersFileExists&Sequence_2"
+        "usersFileExists&Sequence_2"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_usersFilePath"
@@ -69,19 +68,19 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "ReadUsersAndCreateAlertsExcel.xaml",
+      "Path": "ReadUsersCreateAlerts.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "Dt_countries&Sequence_1",
-        "Workbook_alerts&Sequence_1",
-        "Workbook_users&Sequence_1",
+        "usersDT&Sequence_9",
+        "countriesDT&Sequence_1",
+        "usersWorkbook&Sequence_1",
+        "alertsWorkbook&Sequence_1",
         "alertsDt&Sequence_9",
         "out_DT_usersDetails&Sequence_8",
         "alertsWokbook&Sequence_8"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_usersDetails",
-        "in_FilePath"
+        "in_UsersFilePath"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -90,9 +89,9 @@
       "Path": "SendEmails.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "Dt_filteredAlerts&Sequence_1",
-        "str_emailBody&Sequence_1",
-        "Dt_alerts&Sequence_1",
+        "filteredAlertsDT&Sequence_1",
+        "emailBody&Sequence_1",
+        "alertsDT&Sequence_1",
         "cellValue&Sequence_5",
         "rowIndex&Sequence_5"
       ],
@@ -108,8 +107,8 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
-        "out_usersFilePath",
-        "out_alertsFilepath"
+        "out_alertsFilePath",
+        "out_usersFilePath"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
