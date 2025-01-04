@@ -169,20 +169,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign sap2010:Annotation.AnnotationText="Default start for an email" sap:VirtualizedContainerService.HintSize="522.4,144.8" sap2010:WorkflowViewState.IdRef="Assign_1">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">["Alerts:" + vbCrLf]</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                                <ueab:ExcelForEachRowX DisplayName="For_Each_userRow" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="522.4,1711.2" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" Range="[UserExcel.Sheet(&quot;Users&quot;)]" SaveAfterEachRow="False">
+                                <ueab:ExcelForEachRowX DisplayName="For_Each_userRow" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="522.4,1856" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" Range="[UserExcel.Sheet(&quot;Users&quot;)]" SaveAfterEachRow="False">
                                   <ueab:ExcelForEachRowX.Body>
                                     <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
                                       <ActivityAction.Argument1>
@@ -191,7 +178,7 @@
                                       <ActivityAction.Argument2>
                                         <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                                       </ActivityAction.Argument2>
-                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="488.8,1496" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="488.8,1640.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
                                         <Sequence.Variables>
                                           <Variable x:TypeArguments="x:String" Name="cellValue" />
                                           <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
@@ -201,6 +188,19 @@
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
+                                        <Assign sap2010:Annotation.AnnotationText="Default start for an email" sap:VirtualizedContainerService.HintSize="455.2,144.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">["Alerts:" + vbCrLf]</InArgument>
+                                          </Assign.Value>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Assign>
                                         <ueab:ReadRangeX DisplayName="Read_AlertsExcel_Sheet" sap:VirtualizedContainerService.HintSize="455.2,201.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_3" Range="[AlertsExcel.Sheet(userRow.ByField(&quot;Country&quot;))]" SaveTo="[alertsDT]" />
                                         <ui:FilterDataTable DataTable="[alertsDT]" DisplayName="Filter_alertsDT" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="455.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[filteredAlertsDT]" SelectColumnsMode="Remove">
                                           <ui:FilterDataTable.Filters>
