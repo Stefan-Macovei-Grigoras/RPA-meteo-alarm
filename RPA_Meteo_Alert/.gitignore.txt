@@ -1,0 +1,19 @@
+# Ignore temporary files and folders
+.local/
+.objects/
+*.tmh
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Build outputs
+bin/
+obj/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Ignore Excel temp files
+~$*
