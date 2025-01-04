@@ -87,25 +87,26 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UserDataDispatcher" sap:VirtualizedContainerService.HintSize="944.0000000000001,1222.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UserDataDispatcher" sap:VirtualizedContainerService.HintSize="1096,1137.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Check_Users_File_Existence" sap:VirtualizedContainerService.HintSize="452.8,1199.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Execution_Status_Log" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;CheckUsersFileExistence started&quot;]" />
+    <Sequence DisplayName="Check_Users_File_Sequence" sap:VirtualizedContainerService.HintSize="452.8,940" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
-        <Variable x:TypeArguments="x:Boolean" Name="bool_usersFileExists" />
+        <Variable x:TypeArguments="x:Boolean" Name="usersFileExists" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:FileExistsX DisplayName="Users_File_Exists" Exists="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="419.2,166.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_usersFilePath]" />
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="419.2,949.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <ui:FileExistsX DisplayName="Users_File_Existence_Checker" Exists="[usersFileExists]" sap:VirtualizedContainerService.HintSize="419.2,166.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_usersFilePath]" />
+      <TryCatch DisplayName="Users_File_Try_Catch" sap:VirtualizedContainerService.HintSize="419.2,690.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <If Condition="[bool_usersFileExists]" sap:VirtualizedContainerService.HintSize="417.6,505.6" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[usersFileExists]" DisplayName="If_Users_File_Exists" sap:VirtualizedContainerService.HintSize="417.6,304.8" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,13 +114,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Users file check complete&quot;]" />
               </Sequence>
             </If.Then>
             <If.Else>
@@ -129,7 +130,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Throw Exception="[New System.IO.FileNotFoundException(&quot;file not found&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                <Throw DisplayName="Throw _IO.FileNotFoundException" Exception="[New System.IO.FileNotFoundException(&quot;Users file not found&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
               </Sequence>
             </If.Else>
           </If>
@@ -146,13 +147,13 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[&quot;Error in the workflow: &quot;+  Environment.NewLine+ exception.ToString() &amp; Environment.NewLine]" />
+                <TerminateWorkflow DisplayName="Terminate_Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[exception.ToString() &amp; Environment.NewLine]" />
               </Sequence>
             </ActivityAction>
           </Catch>
         </TryCatch.Catches>
         <TryCatch.Finally>
-          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="417.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="417.6,24.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
