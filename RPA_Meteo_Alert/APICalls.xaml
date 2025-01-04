@@ -240,7 +240,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="HTTP" sap:VirtualizedContainerService.HintSize="755.2,4334.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="HTTP" sap:VirtualizedContainerService.HintSize="1096,4334.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="responseContent" />
       <Variable x:TypeArguments="sxl:XDocument" Name="xDocument" />
@@ -493,7 +493,7 @@
                                   <ui:RemoveDuplicateRows DataTable="[alertsDT]" DisplayName="Remove_Duplicate_Rows" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_4" OutputDataTable="[alertsDT]" />
                                   <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Region" DataTable="[alertsDT]" DisplayName="Sort_alertsDT" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[alertsDT]" SortOrder="Ascending" />
                                   <ueab:WriteRangeX Destination="[CurrentAlertsSheet]" DisplayName="Write_alertsDT_To_Alerts_Excel" sap:VirtualizedContainerService.HintSize="433.6,192" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[alertsDT]" />
-                                  <Delay Duration="[TimeSpan.FromSeconds(0.5)]" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                                  <Delay DisplayName="0.5_Delay" Duration="[TimeSpan.FromSeconds(0.5)]" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Delay_1" />
                                 </Sequence>
                               </If.Then>
                               <If.Else>

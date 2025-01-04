@@ -111,11 +111,12 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Read_Input_File" sap:VirtualizedContainerService.HintSize="732.0000000000001,1398.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Read_Input_File" sap:VirtualizedContainerService.HintSize="1096,1398.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="ui:WorkbookApplication" Name="alertsWorkbook" />
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="usersWorkbook" />
-      <Variable x:TypeArguments="sd:DataTable" Name="countriesDT" />
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="alertsWokbook" />
+      <Variable x:TypeArguments="sd:DataTable" Name="alertsDt" />
+      <Variable x:TypeArguments="sd:DataTable" Name="usersDT" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -130,10 +131,6 @@
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,1068" sap2010:WorkflowViewState.IdRef="Sequence_9">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="sd:DataTable" Name="alertsDt" />
-              <Variable x:TypeArguments="sd:DataTable" Name="usersDT" />
-            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -154,10 +151,6 @@
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentUserRow" />
                   </ActivityAction.Argument>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="516.8,579.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="sd:DataTable" Name="out_DT_usersDetails" />
-                      <Variable x:TypeArguments="ui:WorkbookApplication" Name="alertsWokbook" />
-                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
