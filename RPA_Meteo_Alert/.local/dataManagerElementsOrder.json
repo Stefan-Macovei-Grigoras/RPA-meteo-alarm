@@ -13,7 +13,6 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "alertsFilePath&Sequence_1",
-        "userDataTable&Sequence_2",
         "usersFilePath&Sequence_2"
       ],
       "ArgumentsSectionElementsOrder": [],
@@ -71,15 +70,13 @@
       "Path": "ReadUsersCreateAlerts.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "usersDT&Sequence_9",
-        "countriesDT&Sequence_1",
-        "usersWorkbook&Sequence_1",
-        "alertsWorkbook&Sequence_1",
-        "alertsDt&Sequence_9",
-        "out_DT_usersDetails&Sequence_8",
-        "alertsWokbook&Sequence_8"
+        "usersDT&Sequence_1",
+        "alertsDt&Sequence_1",
+        "alertsWokbook&Sequence_1",
+        "usersWorkbook&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_AlertsFilePath",
         "in_UsersFilePath"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -91,9 +88,7 @@
       "VariablesSectionElementsOrder": [
         "filteredAlertsDT&Sequence_1",
         "emailBody&Sequence_1",
-        "alertsDT&Sequence_1",
-        "cellValue&Sequence_5",
-        "rowIndex&Sequence_5"
+        "alertsDT&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_usersFilePath",

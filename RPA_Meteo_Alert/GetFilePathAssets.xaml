@@ -91,7 +91,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Execution_Status_Log" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started GetFilePathAssets&quot;]" />
-    <Sequence DisplayName="GetAssetsSequence" sap:VirtualizedContainerService.HintSize="452.8,1064.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Get_Assets_Sequence" sap:VirtualizedContainerService.HintSize="452.8,1064.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -105,7 +105,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <TryCatch.Try>
-          <ui:TimeoutScope TimeoutMessage="{x:Null}" sap2010:Annotation.AnnotationText="give it 6 seconds to get the assests from the orchestrator or throw a timeout exception and terminate the workflow" DisplayName="Timeout Scope" sap:VirtualizedContainerService.HintSize="417.6,596" sap2010:WorkflowViewState.IdRef="TimeoutScope_1" ThrowExceptionAfter="[TimeSpan.FromSeconds(6)]">
+          <ui:TimeoutScope TimeoutMessage="{x:Null}" sap2010:Annotation.AnnotationText="give it 6 seconds to get the assests from the orchestrator or throw a timeout exception and terminate the workflow" DisplayName="Assets_Timeout_Scope" sap:VirtualizedContainerService.HintSize="417.6,596" sap2010:WorkflowViewState.IdRef="TimeoutScope_1" ThrowExceptionAfter="[TimeSpan.FromSeconds(6)]">
             <ui:TimeoutScope.Body>
               <ActivityAction x:TypeArguments="Activity">
                 <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,401.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -149,7 +149,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <TerminateWorkflow DisplayName="Terminate_Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="Failed to get the assets from the Orchestrator" />
+                <TerminateWorkflow DisplayName="Assets_Terminate_Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="Failed to get the assets from the Orchestrator" />
               </Sequence>
             </ActivityAction>
           </Catch>

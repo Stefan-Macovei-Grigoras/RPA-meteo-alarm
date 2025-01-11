@@ -101,7 +101,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="451.2,2051.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Main_Sequence" sap:VirtualizedContainerService.HintSize="451.2,2051.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="usersFilePath" />
       </Sequence.Variables>
@@ -144,7 +144,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:KillProcess>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Check if the Excel containing the users exists&#xA;The alerts is created anyway if it does not exists yet, so it's no worth checking" DisplayName="CheckUsersFileExistence " sap:VirtualizedContainerService.HintSize="382.4,236" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="CheckUsersFileExistence.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Check if the Excel containing the users exists&#xA;The alerts is created anyway if it does not exists yet, so it's no worth checking" DisplayName="Check_Users_File_Existence " sap:VirtualizedContainerService.HintSize="382.4,236" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="CheckUsersFileExistence.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_usersFilePath">[usersFilePath]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
@@ -154,7 +154,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Read the Excel conaining the users and for each new country that appears create a sheet" DisplayName="Read_Users__Create_Alerts" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ReadUsersCreateAlerts.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Read the Excel conaining the users and for each new country that appears create a sheet" DisplayName="Read_Users_Create_Alerts" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ReadUsersCreateAlerts.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_UsersFilePath">[usersFilePath]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_AlertsFilePath">[alertsFilePath]</InArgument>

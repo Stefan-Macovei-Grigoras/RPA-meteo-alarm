@@ -147,7 +147,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <TerminateWorkflow DisplayName="Terminate_Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[exception.ToString() &amp; Environment.NewLine]" />
+                <TerminateWorkflow DisplayName="Check_Users_File_Terminate_Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[exception.ToString() &amp; Environment.NewLine]" />
               </Sequence>
             </ActivityAction>
           </Catch>

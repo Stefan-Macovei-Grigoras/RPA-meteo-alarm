@@ -262,7 +262,7 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="721.6,4027.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <Sequence DisplayName="API_Sequence" sap:VirtualizedContainerService.HintSize="721.6,4027.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
