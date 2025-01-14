@@ -126,7 +126,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="instead of keeping them local, the paths are stored in orchestrator" DisplayName="Get_FilePath_Assets" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="GetFilePathAssets.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="instead of keeping them local, the paths are stored in orchestrator" DisplayName="Get_FilePath_Assets" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Utils\GetFilePathAssets.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="x:String" x:Key="out_alertsFilePath">[alertsFilePath]</OutArgument>
                 <OutArgument x:TypeArguments="x:String" x:Key="out_usersFilePath">[usersFilePath]</OutArgument>
@@ -144,7 +144,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:KillProcess>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Check if the Excel containing the users exists&#xA;The alerts is created anyway if it does not exists yet, so it's no worth checking" DisplayName="Check_Users_File_Existence " sap:VirtualizedContainerService.HintSize="382.4,236" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="CheckUsersFileExistence.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Check if the Excel containing the users exists&#xA;The alerts is created anyway if it does not exists yet, so it's no worth checking" DisplayName="Check_Users_File_Existence " sap:VirtualizedContainerService.HintSize="382.4,236" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Utils\CheckUsersFileExistence.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_usersFilePath">[usersFilePath]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
@@ -154,7 +154,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Read the Excel conaining the users and for each new country that appears create a sheet" DisplayName="Read_Users_Create_Alerts" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ReadUsersCreateAlerts.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Read the Excel conaining the users and for each new country that appears create a sheet" DisplayName="Read_Users_Create_Alerts" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Excel\ReadUsersCreateAlerts.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_UsersFilePath">[usersFilePath]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_AlertsFilePath">[alertsFilePath]</InArgument>
@@ -165,7 +165,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Populate each Sheet from the Alerts.xlsl with it's regional alerts corresponding with the country" DisplayName="API_Calls" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="APICalls.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Populate each Sheet from the Alerts.xlsl with it's regional alerts corresponding with the country" DisplayName="API_Calls" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="API\APICalls.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_alertsFilepath">[alertsFilePath]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
@@ -175,7 +175,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="For each user, check if there are alerts in it's region and send an if there are email" DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="382.4,211.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="SendEmails.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="For each user, check if there are alerts in it's region and send an if there are email" DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="382.4,211.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Outlook\SendEmails.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_usersFilePath">[usersFilePath]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_alertsFilePath">[alertsFilePath]</InArgument>
