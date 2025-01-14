@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="out_usersFilePath" Type="OutArgument(x:String)" />
     <x:Property Name="out_alertsFilePath" Type="OutArgument(x:String)" />
+    <x:Property Name="out_meteoAlarmEndpoint" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -84,20 +85,20 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetFilePathAssets" sap:VirtualizedContainerService.HintSize="1096,1262.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetFilePathAssets" sap:VirtualizedContainerService.HintSize="732.0000000000001,1671.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Execution_Status_Log" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started GetFilePathAssets&quot;]" />
-    <Sequence DisplayName="Get_Assets_Sequence" sap:VirtualizedContainerService.HintSize="452.8,1064.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Execution_Status_Log" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started GetAssets&quot;]" />
+    <Sequence DisplayName="Get_Assets_Sequence" sap:VirtualizedContainerService.HintSize="452.8,1473.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="Assets_Try_Catch" sap:VirtualizedContainerService.HintSize="419.2,981.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="Assets_Try_Catch" sap:VirtualizedContainerService.HintSize="419.2,1390.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -105,16 +106,21 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <TryCatch.Try>
-          <ui:TimeoutScope TimeoutMessage="{x:Null}" sap2010:Annotation.AnnotationText="give it 6 seconds to get the assests from the orchestrator or throw a timeout exception and terminate the workflow" DisplayName="Assets_Timeout_Scope" sap:VirtualizedContainerService.HintSize="417.6,596" sap2010:WorkflowViewState.IdRef="TimeoutScope_1" ThrowExceptionAfter="[TimeSpan.FromSeconds(6)]">
+          <ui:TimeoutScope TimeoutMessage="{x:Null}" sap2010:Annotation.AnnotationText="give it 6 seconds to get the assests from the orchestrator or throw a timeout exception and terminate the workflow" DisplayName="Assets_Timeout_Scope" sap:VirtualizedContainerService.HintSize="417.6,946.4" sap2010:WorkflowViewState.IdRef="TimeoutScope_1" ThrowExceptionAfter="[TimeSpan.FromSeconds(6)]">
             <ui:TimeoutScope.Body>
               <ActivityAction x:TypeArguments="Activity">
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,401.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,576.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="meteoAlarmEndpoint" CacheStrategy="None" DisplayName="Get_meteoAlarmEndpoint" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="382.4,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+                    <ui:GetRobotAsset.Value>
+                      <OutArgument x:TypeArguments="x:String">[out_meteoAlarmEndpoint]</OutArgument>
+                    </ui:GetRobotAsset.Value>
+                  </ui:GetRobotAsset>
                   <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="alertsFilepath" CacheStrategy="None" DisplayName="Get_alertsFilepath" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="382.4,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
                     <ui:GetRobotAsset.Value>
                       <OutArgument x:TypeArguments="x:String">[out_alertsFilepath]</OutArgument>
@@ -155,7 +161,7 @@
           </Catch>
         </TryCatch.Catches>
         <TryCatch.Finally>
-          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="417.6,24.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="417.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>

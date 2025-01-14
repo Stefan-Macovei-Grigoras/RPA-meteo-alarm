@@ -85,7 +85,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="732.0000000000001,2074.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="732.0000000000001,2132" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="alertsFilePath">
         <sap:WorkflowViewStateService.ViewState>
@@ -101,16 +101,17 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Main_Sequence" sap:VirtualizedContainerService.HintSize="451.2,2051.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Main_Sequence" sap:VirtualizedContainerService.HintSize="451.2,2108.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="usersFilePath" />
+        <Variable x:TypeArguments="x:String" Name="meteoAlarmEndpoint" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch sap2010:Annotation.AnnotationText="Try Catch for unexpected Errors" DisplayName="Main_Try_Catch" sap:VirtualizedContainerService.HintSize="417.6,1968" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch sap2010:Annotation.AnnotationText="Try Catch for unexpected Errors" DisplayName="Main_Try_Catch" sap:VirtualizedContainerService.HintSize="417.6,2025.6" sap2010:WorkflowViewState.IdRef="TryCatch_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -119,17 +120,18 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <TryCatch.Try>
-          <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,1393.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,1451.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="instead of keeping them local, the paths are stored in orchestrator" DisplayName="Get_FilePath_Assets" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Utils\GetFilePathAssets.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="instead of keeping them local, the paths are stored in orchestrator" DisplayName="Get_FilePath_Assets" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Utils\GetAssets.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="x:String" x:Key="out_alertsFilePath">[alertsFilePath]</OutArgument>
                 <OutArgument x:TypeArguments="x:String" x:Key="out_usersFilePath">[usersFilePath]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_meteoAlarmEndpoint">[meteoAlarmEndpoint]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -165,9 +167,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Populate each Sheet from the Alerts.xlsl with it's regional alerts corresponding with the country" DisplayName="API_Calls" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="API\APICalls.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Populate each Sheet from the Alerts.xlsl with it's regional alerts corresponding with the country" DisplayName="API_Calls" sap:VirtualizedContainerService.HintSize="382.4,277.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="API\APICalls.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_alertsFilepath">[alertsFilePath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_meteoAlarmEndpoint">[meteoAlarmEndpoint]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
