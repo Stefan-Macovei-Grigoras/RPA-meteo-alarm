@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Send_Email" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sri="clr-namespace:System.Runtime.InteropServices;assembly=System.Private.CoreLib" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Send_Email" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_alertsFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_usersFilePath" Type="InArgument(x:String)" />
@@ -65,6 +65,7 @@
       <x:String>UiPath.BAF.Activities</x:String>
       <x:String>UiPath.BAF.Infrastructure.Contracts</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -133,12 +134,16 @@
       <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Send_Email" sap:VirtualizedContainerService.HintSize="732.0000000000001,3962.4000000000005" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Send_Email" sap:VirtualizedContainerService.HintSize="756.8,4972.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="alertsDT" />
-      <Variable x:TypeArguments="x:String" Default="[&quot;Alerts:&quot; + vbCrLf]" Name="emailBody" />
+      <Variable x:TypeArguments="x:String" Name="emailBody" />
       <Variable x:TypeArguments="sd:DataTable" Name="filteredAlertsDT" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -146,47 +151,47 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Execution_Status_Log_Message" sap:VirtualizedContainerService.HintSize="725.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Started SendEmails&quot;]" />
-    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel_Process_Scope" sap:VirtualizedContainerService.HintSize="725.6,3764.8" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+    <ui:LogMessage DisplayName="Execution_Status_Log_Message" sap:VirtualizedContainerService.HintSize="756.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Started SendEmails&quot;]" />
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel_Process_Scope" sap:VirtualizedContainerService.HintSize="756.8,4775.2" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
       <ueab:ExcelProcessScopeX.Body>
         <ActivityAction x:TypeArguments="ui:IExcelProcess">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="692,3655.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="723.2,4665.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use_Alerts_Excel" sap:VirtualizedContainerService.HintSize="658.4,3595.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[in_alertsFilePath]">
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use_Alerts_Excel" sap:VirtualizedContainerService.HintSize="689.6,4492.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[in_alertsFilePath]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="AlertsExcel" />
                   </ActivityAction.Argument>
-                  <TryCatch DisplayName="Send_Emails_Try_Catch" sap:VirtualizedContainerService.HintSize="624.8,3302.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch DisplayName="Send_Emails_Try_Catch" sap:VirtualizedContainerService.HintSize="656,4212.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                     <TryCatch.Try>
-                      <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="623.2,3008.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="654.4,3919.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use_Users_Excel_File" sap:VirtualizedContainerService.HintSize="589.6,2948.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[in_usersFilePath]">
+                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use_Users_Excel_File" sap:VirtualizedContainerService.HintSize="656,3823.2000000000003" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[in_usersFilePath]">
                           <ueab:ExcelApplicationCard.Body>
                             <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="UserExcel" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="556,2656" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="622.4,3553.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ueab:ExcelForEachRowX DisplayName="For_Each_userRow" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="522.4,2596" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" Range="[UserExcel.Sheet(&quot;Users&quot;)]" SaveAfterEachRow="False">
+                                <ueab:ExcelForEachRowX DisplayName="For_Each_userRow" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="588.8,3493.6" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" Range="[UserExcel.Sheet(&quot;Users&quot;)]" SaveAfterEachRow="False">
                                   <ueab:ExcelForEachRowX.Body>
                                     <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
                                       <ActivityAction.Argument1>
@@ -195,13 +200,114 @@
                                       <ActivityAction.Argument2>
                                         <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                                       </ActivityAction.Argument2>
-                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="488.8,2380.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="555.2,3278.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="isEmailValid" />
+                                        </Sequence.Variables>
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <Assign sap2010:Annotation.AnnotationText="Default start for an email" DisplayName="Assign_Default_To_emailBody" sap:VirtualizedContainerService.HintSize="455.2,144.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                        <TryCatch DisplayName="Email_Try_Catch" sap:VirtualizedContainerService.HintSize="521.6,1637.6" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                                          <TryCatch.Try>
+                                            <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="520,1098.4" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486.4,1038.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Assign sap:VirtualizedContainerService.HintSize="452.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="scg:IEnumerable(str:Match)">[isEmailValid]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="scg:IEnumerable(str:Match)">[Nothing]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <If Condition="[String.IsNullOrEmpty(userRow.ByField(&quot;Email&quot;).StringValue)]" DisplayName="If_Email_Null" sap:VirtualizedContainerService.HintSize="452.8,841.6" sap2010:WorkflowViewState.IdRef="If_5">
+                                                  <If.Then>
+                                                    <Sequence DisplayName="True" sap:VirtualizedContainerService.HintSize="451.2,173.6" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Throw DisplayName="Throw_BusinessException" Exception="[new BusinessRuleException(&quot;Email missing&quot;)]" sap:VirtualizedContainerService.HintSize="417.6,113.6" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                                                    </Sequence>
+                                                  </If.Then>
+                                                  <If.Else>
+                                                    <Sequence DisplayName="False" sap:VirtualizedContainerService.HintSize="451.2,538.4" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <ui:Matches FirstMatch="{x:Null}" BuilderPattern="((?&gt;[a-zA-Z\d!#$%&amp;'*+\-\/=?^_`{|}~]+\x20*|&quot;((?=[\x01-\x7f])[^&quot;\\]|\\[\x01-\x7f])*&quot;\x20*)*(?&lt;angle&gt;&lt;))?((?!\.)(?&gt;\.?[a-zA-Z\d!#$%&amp;'*+\-\/=?^_`{|}~]+)+|&quot;((?=[\x01-\x7f])[^&quot;\\]|\\[\x01-\x7f])*&quot;)@(((?!-)[a-zA-Z\d\-]+(?&lt;!-)\.)+[a-zA-Z]{2,}|\[(((?(?&lt;!\[)\.)(25[0-5]|2[0-4]\d|[01]?\d?\d)){4}|[a-zA-Z\d\-]*[a-zA-Z\d]:((?=[\x01-\x7f])[^\\\[\]]|\\[\x01-\x7f])+)\])(?(angle)&gt;)" DisplayName="Find Matching Patterns" sap:VirtualizedContainerService.HintSize="417.6,92" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[userRow.ByField(&quot;Email&quot;)]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;EMAIL&quot;,&quot;OperationName&quot;:&quot;Email&quot;,&quot;OperationValue&quot;:&quot;((?&gt;[a-zA-Z\\d!#$%&amp;'*+\\-\\\/=?^_`{|}~]+\\x20*|\&quot;((?=[\\x01-\\x7f])[^\&quot;\\\\]|\\\\[\\x01-\\x7f])*\&quot;\\x20*)*(?&lt;angle&gt;&lt;))?((?!\\.)(?&gt;\\.?[a-zA-Z\\d!#$%&amp;'*+\\-\\\/=?^_`{|}~]+)+|\&quot;((?=[\\x01-\\x7f])[^\&quot;\\\\]|\\\\[\\x01-\\x7f])*\&quot;)@(((?!-)[a-zA-Z\\d\\-]+(?&lt;!-)\\.)+[a-zA-Z]{2,}|\\[(((?(?&lt;!\\[)\\.)(25[0-5]|2[0-4]\\d|[01]?\\d?\\d)){4}|[a-zA-Z\\d\\-]*[a-zA-Z\\d]:((?=[\\x01-\\x7f])[^\\\\\\[\\]]|\\\\[\\x01-\\x7f])+)\\])(?(angle)&gt;)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="((?&gt;[a-zA-Z\d!#$%&amp;'*+\-\/=?^_`{|}~]+\x20*|&quot;((?=[\x01-\x7f])[^&quot;\\]|\\[\x01-\x7f])*&quot;\x20*)*(?&lt;angle&gt;&lt;))?((?!\.)(?&gt;\.?[a-zA-Z\d!#$%&amp;'*+\-\/=?^_`{|}~]+)+|&quot;((?=[\x01-\x7f])[^&quot;\\]|\\[\x01-\x7f])*&quot;)@(((?!-)[a-zA-Z\d\-]+(?&lt;!-)\.)+[a-zA-Z]{2,}|\[(((?(?&lt;!\[)\.)(25[0-5]|2[0-4]\d|[01]?\d?\d)){4}|[a-zA-Z\d\-]*[a-zA-Z\d]:((?=[\x01-\x7f])[^\\\[\]]|\\[\x01-\x7f])+)\])(?(angle)&gt;)" RegexOption="IgnoreCase, Compiled" Result="[isEmailValid]" />
+                                                      <If Condition="[isEmailValid.Any()]" DisplayName="If_Email_Valid" sap:VirtualizedContainerService.HintSize="417.6,386.4" sap2010:WorkflowViewState.IdRef="If_4">
+                                                        <If.Then>
+                                                          <Sequence DisplayName="True" sap:VirtualizedContainerService.HintSize="416,83.2" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </Sequence>
+                                                        </If.Then>
+                                                        <If.Else>
+                                                          <Sequence DisplayName="False" sap:VirtualizedContainerService.HintSize="416,173.6" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <Throw DisplayName="Throw_BusinessException" Exception="[new BusinessRuleException(&quot;Invalid email&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                                          </Sequence>
+                                                        </If.Else>
+                                                      </If>
+                                                    </Sequence>
+                                                  </If.Else>
+                                                </If>
+                                              </Sequence>
+                                            </Sequence>
+                                          </TryCatch.Try>
+                                          <TryCatch.Catches>
+                                            <Catch x:TypeArguments="ui:BusinessRuleException" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                                              <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,282.4" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;faulty email &quot; + exception.ToString]" />
+                                                  <ui:Continue sap:VirtualizedContainerService.HintSize="486.4,48" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </Catch>
+                                          </TryCatch.Catches>
+                                          <TryCatch.Finally>
+                                            <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="520,83.2" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </Sequence>
+                                          </TryCatch.Finally>
+                                        </TryCatch>
+                                        <Assign sap2010:Annotation.AnnotationText="Default start for an email" DisplayName="Assign_Default_To_emailBody" sap:VirtualizedContainerService.HintSize="521.6,144.8" sap2010:WorkflowViewState.IdRef="Assign_1">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
                                           </Assign.To>
@@ -214,8 +320,8 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </Assign>
-                                        <ueab:ReadRangeX DisplayName="Read_AlertsExcel_Sheet" sap:VirtualizedContainerService.HintSize="455.2,201.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_3" Range="[AlertsExcel.Sheet(userRow.ByField(&quot;Country&quot;))]" SaveTo="[alertsDT]" />
-                                        <ui:FilterDataTable DataTable="[alertsDT]" DisplayName="Filter_alertsDT" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="455.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[filteredAlertsDT]" SelectColumnsMode="Remove">
+                                        <ueab:ReadRangeX DisplayName="Read_AlertsExcel_Sheet" sap:VirtualizedContainerService.HintSize="521.6,201.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_3" Range="[AlertsExcel.Sheet(userRow.ByField(&quot;Country&quot;))]" SaveTo="[alertsDT]" />
+                                        <ui:FilterDataTable DataTable="[alertsDT]" DisplayName="Filter_alertsDT" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="521.6,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[filteredAlertsDT]" SelectColumnsMode="Remove">
                                           <ui:FilterDataTable.Filters>
                                             <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                                               <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -234,9 +340,9 @@
                                             </scg:List>
                                           </ui:FilterDataTable.SelectColumns>
                                         </ui:FilterDataTable>
-                                        <If Condition="[filteredAlertsDT.Rows.Count &gt; 0]" DisplayName="If_Regional_Alerts_Exist" sap:VirtualizedContainerService.HintSize="455.2,1780" sap2010:WorkflowViewState.IdRef="If_2">
+                                        <If Condition="[filteredAlertsDT.Rows.Count &gt; 0]" DisplayName="If_Regional_Alerts_Exist" sap:VirtualizedContainerService.HintSize="521.6,1040" sap2010:WorkflowViewState.IdRef="If_2">
                                           <If.Then>
-                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="453.6,1560.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="453.6,820.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -273,71 +379,18 @@
                                                   </ActivityAction>
                                                 </ui:ForEachRow.Body>
                                               </ui:ForEachRow>
-                                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="420,909.6" sap2010:WorkflowViewState.IdRef="TryCatch_2">
-                                                <TryCatch.Try>
-                                                  <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,229.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[emailBody]" ContinueOnError="False" DisplayName="Send_Outlook_Mail" sap:VirtualizedContainerService.HintSize="382.4,169.6" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="High" IsBodyHtml="False" IsDraft="False" Sensitivity="Personal" Subject="Alert in your area" To="[userRow.ByField(&quot;Email&quot;)]" UseISConnection="True">
-                                                      <ui:SendOutlookMail.ConnectionDetailsBackupSlot>
-                                                        <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
-                                                          <usau:BackupSlot.BackupValues>
-                                                            <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
-                                                          </usau:BackupSlot.BackupValues>
-                                                        </usau:BackupSlot>
-                                                      </ui:SendOutlookMail.ConnectionDetailsBackupSlot>
-                                                      <ui:SendOutlookMail.Files>
-                                                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                                                      </ui:SendOutlookMail.Files>
-                                                    </ui:SendOutlookMail>
-                                                  </Sequence>
-                                                </TryCatch.Try>
-                                                <TryCatch.Catches>
-                                                  <Catch x:TypeArguments="sri:COMException" sap2010:WorkflowViewState.IdRef="Catch`1_4">
-                                                    <ActivityAction x:TypeArguments="sri:COMException">
-                                                      <ActivityAction.Argument>
-                                                        <DelegateInArgument x:TypeArguments="sri:COMException" Name="exception" />
-                                                      </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;faulty email &quot; + exception.ToString]" />
-                                                      </Sequence>
-                                                    </ActivityAction>
-                                                  </Catch>
-                                                  <Catch x:TypeArguments="um:MailException" sap2010:WorkflowViewState.IdRef="Catch`1_5">
-                                                    <ActivityAction x:TypeArguments="um:MailException">
-                                                      <ActivityAction.Argument>
-                                                        <DelegateInArgument x:TypeArguments="um:MailException" Name="exception" />
-                                                      </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;faulty email &quot; + exception.ToString]" />
-                                                      </Sequence>
-                                                    </ActivityAction>
-                                                  </Catch>
-                                                </TryCatch.Catches>
-                                                <TryCatch.Finally>
-                                                  <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                  </Sequence>
-                                                </TryCatch.Finally>
-                                              </TryCatch>
+                                              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[emailBody]" ContinueOnError="False" DisplayName="Send_Outlook_Mail" sap:VirtualizedContainerService.HintSize="420,169.6" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="High" IsBodyHtml="False" IsDraft="False" Sensitivity="Personal" Subject="Alert in your area" To="[userRow.ByField(&quot;Email&quot;)]" UseISConnection="True">
+                                                <ui:SendOutlookMail.ConnectionDetailsBackupSlot>
+                                                  <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
+                                                    <usau:BackupSlot.BackupValues>
+                                                      <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
+                                                    </usau:BackupSlot.BackupValues>
+                                                  </usau:BackupSlot>
+                                                </ui:SendOutlookMail.ConnectionDetailsBackupSlot>
+                                                <ui:SendOutlookMail.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                </ui:SendOutlookMail.Files>
+                                              </ui:SendOutlookMail>
                                             </Sequence>
                                           </If.Then>
                                           <If.Else>
@@ -372,7 +425,7 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:ArgumentException" Name="exception" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="623.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="654.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -385,7 +438,7 @@
                       </Catch>
                     </TryCatch.Catches>
                     <TryCatch.Finally>
-                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="623.2,83.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="654.4,83.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -398,6 +451,13 @@
                 </ActivityAction>
               </ueab:ExcelApplicationCard.Body>
             </ueab:ExcelApplicationCard>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="689.6,112.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
           </Sequence>
         </ActivityAction>
       </ueab:ExcelProcessScopeX.Body>
