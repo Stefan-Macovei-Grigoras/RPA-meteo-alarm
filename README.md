@@ -27,16 +27,17 @@ This project automates the process of monitoring weather alerts from the [Meteo 
     - Use **parallel workflows** in UiPath to handle multiple users or regions simultaneously.
     - Divide the task of checking alarms or extracting data into smaller chunks and process them concurrently.
     - Use queues in UiPath Orchestrator to manage tasks more efficiently.
+- Dynamic Queue Management
+   - Leverage UiPath **Orchestrator queues** to distribute tasks.
+   - Push tasks for each user or region into a queue.
+   - Assign robots to process these tasks concurrently, ensuring faster processing
 - Scalable Report Generation
    - Generate reports in formats suitable for large datasets (e.g., CSV, Parquet).
    - Store historical reports in a centralized repository (e.g., cloud storage) for easy access and sharing.
 - Database Integration
    - Replace Excel files with a **database** for better scalability and performance.
-    - Store user data, regions, alarms, and reports in a relational database (e.g., PostgreSQL, MySQL, Data Service from Orchestrator).
--Dynamic Queue Management
-   - Leverage UiPath **Orchestrator queues** to distribute tasks.
-   - Push tasks for each user or region into a queue.
-   - Assign robots to process these tasks concurrently, ensuring faster processing
+   - Store user data, regions, alarms, and reports in a relational database (e.g., PostgreSQL, MySQL, Data Service from Orchestrator).
+
 
 
 
